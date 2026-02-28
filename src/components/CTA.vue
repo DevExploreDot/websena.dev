@@ -1,27 +1,22 @@
 <template>
-  <section class="cta-section py-[var(--space-3xl)] px-[var(--space-md)] relative overflow-hidden">
-    <!-- Background decorative elements -->
+  <section class="cta-section">
     <div class="bg-grid"></div>
-    <div class="bg-glow bg-glow--center"></div>
+    <!-- <div class="bg-glow bg-glow--center"></div> -->
     
-    <div class="cta-container max-w-4xl mx-auto px-4 text-center relative z-10">
-      <!-- Badge -->
+    <div class="cta-container">
       <div class="cta-badge">
         <span class="badge-dot"></span>
         <span>Respuesta en menos de 2 horas</span>
       </div>
       
-      <!-- Title -->
       <h2 class="cta-title">
         ¿Listo para llevar tu negocio<br /><em>al siguiente nivel</em>?
       </h2>
       
-      <!-- Description -->
       <p class="cta-subtitle">
         Agenda una consulta gratuita de 30 minutos. Sin compromiso, solo conversamos sobre tu proyecto y cómo puedo ayudarte.
       </p>
       
-      <!-- CTA Buttons -->
       <div class="cta-buttons">
         <a 
           :href="whatsappLink" 
@@ -44,7 +39,6 @@
         </a>
       </div>
       
-      <!-- Trust indicators -->
       <div class="cta-trust">
         <div class="trust-item">
           <svg class="trust-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -81,26 +75,22 @@ const emailLink = `mailto:${email}?subject=${emailSubject}&body=${emailBody}`
 </script>
 
 <style scoped>
-/* ── Variables (reutilizadas de Pricing.vue) ── */
+/* ── Estilos refactorizados usando tus variables ── */
 .cta-section {
-  --accent: #00e5a0;
-  --accent-dim: rgba(0, 229, 160, 0.12);
-  --accent-glow: rgba(0, 229, 160, 0.35);
-  --bg: #080c10;
-  --surface: #0e1419;
-  --surface-2: #131a22;
-  --border: rgba(255, 255, 255, 0.07);
-  --border-accent: rgba(0, 229, 160, 0.4);
-  --text: #e8edf2;
-  --text-muted: #6b7a8d;
-  --popular-gradient: linear-gradient(135deg, #00e5a0 0%, #00b4d8 100%);
-
-  background: var(--bg);
+  background: var(--color-bg);
+  color: var(--color-text);
   font-family: 'DM Sans', 'Segoe UI', sans-serif;
+  position: relative;
+  overflow: hidden;
+  /* Espaciado usando tus variables */
+  padding-top: var(--space-3xl);
+  padding-bottom: var(--space-3xl);
+  padding-left: var(--space-md);
+  padding-right: var(--space-md);
 }
 
 /* ── Background effects ── */
-.bg-grid {
+/* .bg-grid {
   position: absolute;
   inset: 0;
   background-image:
@@ -108,9 +98,10 @@ const emailLink = `mailto:${email}?subject=${emailSubject}&body=${emailBody}`
     linear-gradient(90deg, rgba(255,255,255,0.025) 1px, transparent 1px);
   background-size: 60px 60px;
   mask-image: radial-gradient(ellipse 80% 60% at 50% 50%, black 40%, transparent 100%);
+  -webkit-mask-image: radial-gradient(ellipse 80% 60% at 50% 50%, black 40%, transparent 100%);
   pointer-events: none;
 }
-
+ */
 .bg-glow--center {
   position: absolute;
   top: 50%;
@@ -119,9 +110,20 @@ const emailLink = `mailto:${email}?subject=${emailSubject}&body=${emailBody}`
   width: 800px;
   height: 800px;
   border-radius: 50%;
-  background: rgba(0, 229, 160, 0.08);
+  /* Corregido a tu accent color con opacidad */
+  background: var(--color-accent-dim);
   filter: blur(150px);
   pointer-events: none;
+}
+
+/* ── Layout ── */
+.cta-container {
+  max-width: 896px; /* max-w-4xl */
+  margin: 0 auto;
+  padding: 0 16px;
+  text-align: center;
+  position: relative;
+  z-index: 1;
 }
 
 /* ── Badge ── */
@@ -132,9 +134,9 @@ const emailLink = `mailto:${email}?subject=${emailSubject}&body=${emailBody}`
   font-size: 13px;
   font-weight: 600;
   letter-spacing: 0.03em;
-  color: var(--accent);
-  background: var(--accent-dim);
-  border: 1px solid var(--border-accent);
+  color: var(--color-accent);
+  background: var(--color-accent-dim);
+  border: 1px solid var(--color-border-accent);
   padding: 8px 18px;
   border-radius: 100px;
   margin-bottom: 32px;
@@ -143,7 +145,7 @@ const emailLink = `mailto:${email}?subject=${emailSubject}&body=${emailBody}`
 .badge-dot {
   width: 8px;
   height: 8px;
-  background: var(--accent);
+  background: var(--color-accent);
   border-radius: 50%;
   animation: pulse 2s ease-in-out infinite;
 }
@@ -152,7 +154,7 @@ const emailLink = `mailto:${email}?subject=${emailSubject}&body=${emailBody}`
 .cta-title {
   font-size: clamp(36px, 6vw, 64px);
   font-weight: 800;
-  color: var(--text);
+  color: var(--color-text);
   line-height: 1.05;
   margin: 0 0 24px;
   letter-spacing: -0.03em;
@@ -160,7 +162,8 @@ const emailLink = `mailto:${email}?subject=${emailSubject}&body=${emailBody}`
 
 .cta-title em {
   font-style: normal;
-  background: var(--popular-gradient);
+  /* CORREGIDO A TU GRADIENTE */
+  background: var(--color-gradient-popular);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
@@ -169,7 +172,7 @@ const emailLink = `mailto:${email}?subject=${emailSubject}&body=${emailBody}`
 /* ── Subtitle ── */
 .cta-subtitle {
   font-size: 18px;
-  color: var(--text-muted);
+  color: var(--color-text-muted);
   line-height: 1.7;
   max-width: 600px;
   margin: 0 auto 40px;
@@ -199,22 +202,22 @@ const emailLink = `mailto:${email}?subject=${emailSubject}&body=${emailBody}`
 }
 
 .cta-button--primary {
-  background: var(--accent);
+  background: var(--color-accent);
   color: #000;
-  border: 2px solid var(--accent);
+  border: 2px solid var(--color-accent);
 }
 
 .cta-button--primary:hover {
-  background: #00ffb3;
-  border-color: #00ffb3;
-  box-shadow: 0 0 40px var(--accent-glow);
+  background: #ffb300; /* Tono naranja más claro para el hover */
+  border-color: #ffb300;
+  box-shadow: 0 0 40px var(--color-accent-glow);
   transform: translateY(-3px);
 }
 
 .cta-button--secondary {
   background: transparent;
-  color: var(--text);
-  border: 2px solid var(--border);
+  color: var(--color-text);
+  border: 2px solid var(--color-border);
 }
 
 .cta-button--secondary:hover {
@@ -243,19 +246,19 @@ const emailLink = `mailto:${email}?subject=${emailSubject}&body=${emailBody}`
   align-items: center;
   gap: 10px;
   font-size: 14px;
-  color: var(--text-muted);
+  color: var(--color-text-muted);
 }
 
 .trust-icon {
   width: 20px;
   height: 20px;
-  color: var(--accent);
+  color: var(--color-accent);
 }
 
 /* ── Animations ── */
 @keyframes pulse {
   0%, 100% { opacity: 1; }
-  50%       { opacity: 0.4; }
+  50%      { opacity: 0.4; }
 }
 
 /* ── Responsive ── */

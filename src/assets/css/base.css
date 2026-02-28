@@ -1,0 +1,27 @@
+/* base.css */
+:root {
+  /* Asegúrate de que este archivo importe o use las variables de variables.css */
+}
+
+body {
+  background-color: var(--color-bg);
+  color: var(--color-text);
+  line-height: 1.6;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 var(--space-md);
+}
+
+section {
+  padding: var(--space-4xl) 0;
+}
+
+/* Tipografía Semántica */
+h1, h2, h3 {
+  color: var(--color-text);
+  font-weight: 800;
+  line-height: 1.1;
+}

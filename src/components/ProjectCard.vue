@@ -1,10 +1,8 @@
 <template>
-  <div class="project-card">
+  <div class="project-card" :class="{ 'project-card--reverse': imageRight }">
     <div class="project-card__inner">
-      <!-- Image Section -->
-      <div :class="imagePositionClass" class="project-card__image">
+      <div class="project-card__image">
         <div class="project-card__image-container">
-          <!-- Project Image or Placeholder -->
           <div v-if="imageUrl" class="project-card__image-wrapper">
             <img :src="imageUrl" :alt="title" class="project-card__image-element" />
             <div class="project-card__image-overlay"></div>
@@ -20,21 +18,16 @@
           </div>
         </div>
         
-        <!-- Project Type Badge -->
         <div class="project-card__badge">
           <span>{{ projectType }}</span>
         </div>
       </div>
       
-      <!-- Content Section -->
-      <div :class="contentPositionClass" class="project-card__content">
-        <!-- Title -->
+      <div class="project-card__content">
         <h3 class="project-card__title">{{ title }}</h3>
         
-        <!-- Description -->
         <p class="project-card__description">{{ description }}</p>
         
-        <!-- Results/Metrics -->
         <div v-if="results && results.length > 0" class="project-card__results">
           <p class="project-card__results-title">Resultados:</p>
           <ul class="project-card__results-list">
@@ -47,7 +40,6 @@
           </ul>
         </div>
         
-        <!-- Features -->
         <div class="project-card__features">
           <p class="project-card__features-title">Características principales:</p>
           <ul class="project-card__features-list">
@@ -60,7 +52,6 @@
           </ul>
         </div>
         
-        <!-- Technologies -->
         <div class="project-card__tech">
           <p class="project-card__tech-title">Tecnologías:</p>
           <div class="project-card__tech-list">
@@ -74,7 +65,6 @@
           </div>
         </div>
         
-        <!-- Links -->
         <div class="project-card__actions">
           <a 
             v-if="liveLink"
@@ -106,8 +96,7 @@
 </template>
 
 <script setup lang="ts">
-import { computed } from 'vue'
-
+// interface Props... (se mantiene igual)
 interface Props {
   title: string
   description: string
@@ -121,40 +110,22 @@ interface Props {
   results?: string[]
 }
 
-const props = withDefaults(defineProps<Props>(), {
+withDefaults(defineProps<Props>(), {
   imageRight: true,
   projectType: 'Web App'
 })
-
-const imagePositionClass = computed(() => props.imageRight ? 'md:order-2' : 'md:order-1')
-const contentPositionClass = computed(() => props.imageRight ? 'md:order-1' : 'md:order-2')
 </script>
 
 <style scoped>
-/* ── Variables (reutilizadas de Pricing.vue) ── */
-.project-card {
-  --accent: #00e5a0;
-  --accent-dim: rgba(0, 229, 160, 0.12);
-  --accent-glow: rgba(0, 229, 160, 0.35);
-  --bg: #080c10;
-  --surface: #0e1419;
-  --surface-2: #131a22;
-  --border: rgba(255, 255, 255, 0.07);
-  --border-accent: rgba(0, 229, 160, 0.4);
-  --text: #e8edf2;
-  --text-muted: #6b7a8d;
-  --popular-gradient: linear-gradient(135deg, #00e5a0 0%, #00b4d8 100%);
-
-  font-family: 'DM Sans', 'Segoe UI', sans-serif;
-}
-
 /* ── Card base ── */
 .project-card__inner {
-  background: var(--surface);
-  border: 1px solid var(--border);
+  background: var(--color-surface); /* GLOBAL */
+  border: 1px solid var(--color-border); /* GLOBAL */
   border-radius: 24px;
   overflow: hidden;
   transition: transform 0.3s ease, box-shadow 0.3s ease;
+  display: flex;
+  flex-direction: column;
 }
 
 .project-card__inner:hover {
@@ -163,13 +134,12 @@ const contentPositionClass = computed(() => props.imageRight ? 'md:order-1' : 'm
   border-color: rgba(255, 255, 255, 0.12);
 }
 
-/* ── Layout ── */
-.project-card__inner {
-  display: flex;
-  flex-direction: column;
-}
-
+/* ── Layout para alternar imagen (SOLUCIÓN) ── */
 @media (min-width: 768px) {
+  .project-card--reverse .project-card__inner {
+    flex-direction: row-reverse;
+  }
+  
   .project-card__inner {
     flex-direction: row;
   }
@@ -196,7 +166,7 @@ const contentPositionClass = computed(() => props.imageRight ? 'md:order-1' : 'm
   align-items: center;
   justify-content: center;
   padding: 24px;
-  background: linear-gradient(135deg, var(--surface-2) 0%, var(--surface) 100%);
+  background: linear-gradient(135deg, var(--color-surface-2) 0%, var(--color-surface) 100%); /* GLOBAL */
 }
 
 .project-card__image-wrapper {
@@ -240,19 +210,19 @@ const contentPositionClass = computed(() => props.imageRight ? 'md:order-1' : 'm
   align-items: center;
   justify-content: center;
   margin: 0 auto 16px;
-  color: var(--text-muted);
+  color: var(--color-text-muted); /* GLOBAL */
 }
 
 .project-card__placeholder-text {
   font-size: 16px;
-  color: var(--text-muted);
+  color: var(--color-text-muted); /* GLOBAL */
   font-weight: 500;
   margin-bottom: 4px;
 }
 
 .project-card__placeholder-subtext {
   font-size: 13px;
-  color: var(--text-muted);
+  color: var(--color-text-muted); /* GLOBAL */
   opacity: 0.7;
 }
 
@@ -261,15 +231,15 @@ const contentPositionClass = computed(() => props.imageRight ? 'md:order-1' : 'm
   position: absolute;
   top: 24px;
   left: 24px;
-  background: var(--accent-dim);
-  color: var(--accent);
+  background: var(--color-accent-dim); /* GLOBAL */
+  color: var(--color-accent); /* GLOBAL */
   font-size: 12px;
   font-weight: 700;
   letter-spacing: 0.05em;
   text-transform: uppercase;
   padding: 6px 14px;
   border-radius: 100px;
-  border: 1px solid var(--border-accent);
+  border: 1px solid var(--color-border-accent); /* GLOBAL */
 }
 
 /* ── Content section ── */
@@ -288,22 +258,22 @@ const contentPositionClass = computed(() => props.imageRight ? 'md:order-1' : 'm
 .project-card__title {
   font-size: 28px;
   font-weight: 800;
-  color: var(--text);
+  color: var(--color-text); /* GLOBAL */
   margin: 0 0 16px;
   line-height: 1.2;
 }
 
 .project-card__description {
   font-size: 16px;
-  color: var(--text-muted);
+  color: var(--color-text-muted); /* GLOBAL */
   line-height: 1.6;
   margin: 0 0 28px;
 }
 
 /* ── Results ── */
 .project-card__results {
-  background: rgba(0, 229, 160, 0.05);
-  border: 1px solid rgba(0, 229, 160, 0.2);
+  background: var(--color-accent-dim); /* GLOBAL */
+  border: 1px solid var(--color-border-accent); /* GLOBAL */
   border-radius: 16px;
   padding: 20px;
   margin-bottom: 28px;
@@ -312,7 +282,7 @@ const contentPositionClass = computed(() => props.imageRight ? 'md:order-1' : 'm
 .project-card__results-title {
   font-size: 14px;
   font-weight: 700;
-  color: var(--accent);
+  color: var(--color-accent); /* GLOBAL */
   text-transform: uppercase;
   letter-spacing: 0.05em;
   margin-bottom: 12px;
@@ -329,7 +299,7 @@ const contentPositionClass = computed(() => props.imageRight ? 'md:order-1' : 'm
 
 .project-card__result-item {
   font-size: 14px;
-  color: var(--text);
+  color: var(--color-text); /* GLOBAL */
   display: flex;
   align-items: flex-start;
   gap: 10px;
@@ -338,7 +308,7 @@ const contentPositionClass = computed(() => props.imageRight ? 'md:order-1' : 'm
 .project-card__result-icon {
   width: 16px;
   height: 16px;
-  color: var(--accent);
+  color: var(--color-accent); /* GLOBAL */
   flex-shrink: 0;
   margin-top: 2px;
 }
@@ -351,7 +321,7 @@ const contentPositionClass = computed(() => props.imageRight ? 'md:order-1' : 'm
 .project-card__features-title {
   font-size: 14px;
   font-weight: 700;
-  color: var(--text-muted);
+  color: var(--color-text-muted); /* GLOBAL */
   text-transform: uppercase;
   letter-spacing: 0.05em;
   margin-bottom: 16px;
@@ -371,13 +341,13 @@ const contentPositionClass = computed(() => props.imageRight ? 'md:order-1' : 'm
   align-items: flex-start;
   gap: 12px;
   font-size: 15px;
-  color: var(--text);
+  color: var(--color-text); /* GLOBAL */
 }
 
 .project-card__feature-icon {
   width: 20px;
   height: 20px;
-  color: var(--accent);
+  color: var(--color-accent); /* GLOBAL */
   flex-shrink: 0;
   margin-top: 2px;
 }
@@ -390,7 +360,7 @@ const contentPositionClass = computed(() => props.imageRight ? 'md:order-1' : 'm
 .project-card__tech-title {
   font-size: 14px;
   font-weight: 700;
-  color: var(--text-muted);
+  color: var(--color-text-muted); /* GLOBAL */
   text-transform: uppercase;
   letter-spacing: 0.05em;
   margin-bottom: 12px;
@@ -404,7 +374,7 @@ const contentPositionClass = computed(() => props.imageRight ? 'md:order-1' : 'm
 
 .project-card__tech-item {
   background: rgba(255, 255, 255, 0.05);
-  color: var(--text-muted);
+  color: var(--color-text-muted); /* GLOBAL */
   font-size: 13px;
   font-weight: 600;
   padding: 6px 14px;
@@ -433,21 +403,21 @@ const contentPositionClass = computed(() => props.imageRight ? 'md:order-1' : 'm
 }
 
 .project-card__button--primary {
-  background: var(--accent);
+  background: var(--color-accent); /* GLOBAL */
   color: #000;
-  border: 2px solid var(--accent);
+  border: 2px solid var(--color-accent); /* GLOBAL */
 }
 
 .project-card__button--primary:hover {
   background: #00ffb3;
   border-color: #00ffb3;
-  box-shadow: 0 0 24px var(--accent-glow);
+  box-shadow: 0 0 24px var(--color-accent); /* GLOBAL */
 }
 
 .project-card__button--secondary {
   background: transparent;
-  color: var(--text);
-  border: 2px solid var(--border);
+  color: var(--color-text); /* GLOBAL */
+  border: 2px solid var(--color-border); /* GLOBAL */
 }
 
 .project-card__button--secondary:hover {

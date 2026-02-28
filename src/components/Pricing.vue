@@ -1,12 +1,10 @@
 <template>
   <section class="pricing-section" id="precios">
-    <!-- Background decorative elements -->
     <div class="bg-grid"></div>
-    <div class="bg-glow bg-glow--left"></div>
-    <div class="bg-glow bg-glow--right"></div>
+    <!-- <div class="bg-glow bg-glow--left"></div>
+    <div class="bg-glow bg-glow--right"></div> -->
 
     <div class="pricing-container">
-      <!-- Header -->
       <div class="pricing-header">
         <span class="pricing-eyebrow">Inversión</span>
         <h2 class="pricing-title">Planes que escalan<br /><em>con tu negocio</em></h2>
@@ -14,7 +12,6 @@
           Transparencia total. Sin sorpresas. Elige el plan que mejor se adapte a lo que necesitas.
         </p>
 
-        <!-- Service type selector -->
         <div class="service-tabs">
           <button
             v-for="service in services"
@@ -29,7 +26,6 @@
         </div>
       </div>
 
-      <!-- Plans grid -->
       <div class="plans-grid">
         <div
           v-for="(plan, index) in currentPlans"
@@ -41,19 +37,16 @@
             'plan-card--premium': index === 2,
           }"
         >
-          <!-- Popular badge -->
           <div v-if="plan.popular" class="popular-badge">
             <span>⚡ Más elegido</span>
           </div>
 
-          <!-- Plan header -->
           <div class="plan-header">
             <div class="plan-icon">{{ plan.icon }}</div>
             <h3 class="plan-name">{{ plan.name }}</h3>
             <p class="plan-description">{{ plan.description }}</p>
           </div>
 
-          <!-- Price -->
           <div class="plan-price">
             <span class="plan-price__currency">$</span>
             <span class="plan-price__amount">{{ plan.price }}</span>
@@ -61,7 +54,6 @@
           </div>
           <p class="plan-delivery">⏱ Entrega en {{ plan.delivery }}</p>
 
-          <!-- Features -->
           <ul class="plan-features">
             <li
               v-for="feature in plan.features"
@@ -74,7 +66,6 @@
             </li>
           </ul>
 
-          <!-- CTA -->
           <a
             href="#contacto"
             class="plan-cta"
@@ -86,7 +77,6 @@
         </div>
       </div>
 
-      <!-- Footer note -->
       <p class="pricing-note">
         💬 ¿Tienes un proyecto especial? <a href="#contacto" class="pricing-note__link">Hablemos</a> y armamos un plan a tu medida.
       </p>
@@ -120,65 +110,65 @@ const activeService = ref('landing')
 
 const services: ServiceType[] = [
   {
-  id: 'landing',
-  label: 'Landing Page',
-  icon: '🚀',
-  plans: [
-    {
-      name: 'Básico',
-      icon: '🌱',
-      description: 'Presencia online rápida y profesional.',
-      price: '250', // ↓ de 299
-      delivery: '5–7 días',
-      features: [
-        { text: 'Diseño de 1 página', included: true },
-        { text: 'Responsive (móvil + escritorio)', included: true },
-        { text: 'Formulario de contacto', included: true },
-        { text: 'SEO básico', included: true },
-        { text: 'Dominio y hosting 3 meses', included: true }, // ✨ Agregado
-        { text: 'Animaciones personalizadas', included: false },
-        { text: 'Integración con CRM', included: false },
-        { text: 'Soporte 30 días', included: false },
-      ],
-    },
-    {
-      name: 'Estándar',
-      icon: '⚡',
-      description: 'Convierte visitas en clientes desde el día 1.',
-      price: '450', // ↓ de 599
-      delivery: '10–14 días',
-      popular: true,
-      features: [
-        { text: 'Diseño de 1 página premium', included: true },
-        { text: 'Responsive (móvil + escritorio)', included: true },
-        { text: 'Formulario de contacto', included: true },
-        { text: 'SEO optimizado', included: true },
-        { text: 'Dominio y hosting 6 meses', included: true }, // ✨ Agregado
-        { text: 'Animaciones personalizadas', included: true },
-        { text: 'Integración con CRM', included: true },
-        { text: 'Soporte 30 días', included: true }, // ✨ Agregado
-      ],
-    },
-    {
-      name: 'Premium',
-      icon: '👑',
-      description: 'Solución completa con estrategia de conversión.',
-      price: '750', // ↓ de 999
-      delivery: '14–21 días',
-      features: [
-        { text: 'Diseño de hasta 3 páginas', included: true },
-        { text: 'Responsive (móvil + escritorio)', included: true },
-        { text: 'Formulario de contacto', included: true },
-        { text: 'SEO avanzado + analytics', included: true },
-        { text: 'Dominio y hosting 12 meses', included: true }, // ✨ Agregado
-        { text: 'Animaciones personalizadas', included: true },
-        { text: 'Integración con CRM', included: true },
-        { text: 'Blog / secciones extra', included: true },
-        { text: 'Soporte 60 días', included: true }, // ✨ Mejorado
-      ],
-    },
-  ],
-},
+    id: 'landing',
+    label: 'Landing Page',
+    icon: '🚀',
+    plans: [
+      {
+        name: 'Básico',
+        icon: '🌱',
+        description: 'Presencia online rápida y profesional.',
+        price: '250',
+        delivery: '5–7 días',
+        features: [
+          { text: 'Diseño de 1 página', included: true },
+          { text: 'Responsive (móvil + escritorio)', included: true },
+          { text: 'Formulario de contacto', included: true },
+          { text: 'SEO básico', included: true },
+          { text: 'Dominio y hosting 3 meses', included: true },
+          { text: 'Animaciones personalizadas', included: false },
+          { text: 'Integración con CRM', included: false },
+          { text: 'Soporte 30 días', included: false },
+        ],
+      },
+      {
+        name: 'Estándar',
+        icon: '⚡',
+        description: 'Convierte visitas en clientes desde el día 1.',
+        price: '450',
+        delivery: '10–14 días',
+        popular: true,
+        features: [
+          { text: 'Diseño de 1 página premium', included: true },
+          { text: 'Responsive (móvil + escritorio)', included: true },
+          { text: 'Formulario de contacto', included: true },
+          { text: 'SEO optimizado', included: true },
+          { text: 'Dominio y hosting 6 meses', included: true },
+          { text: 'Animaciones personalizadas', included: true },
+          { text: 'Integración con CRM', included: true },
+          { text: 'Soporte 30 días', included: true },
+        ],
+      },
+      {
+        name: 'Premium',
+        icon: '👑',
+        description: 'Solución completa con estrategia de conversión.',
+        price: '750',
+        delivery: '14–21 días',
+        features: [
+          { text: 'Diseño de hasta 3 páginas', included: true },
+          { text: 'Responsive (móvil + escritorio)', included: true },
+          { text: 'Formulario de contacto', included: true },
+          { text: 'SEO avanzado + analytics', included: true },
+          { text: 'Dominio y hosting 12 meses', included: true },
+          { text: 'Animaciones personalizadas', included: true },
+          { text: 'Integración con CRM', included: true },
+          { text: 'Blog / secciones extra', included: true },
+          { text: 'Soporte 60 días', included: true },
+        ],
+      },
+    ],
+  },
   {
     id: 'corporate',
     label: 'Sitio Corporativo',
@@ -364,29 +354,17 @@ const currentPlans = computed(() => {
 </script>
 
 <style scoped>
-/* ── Variables ── */
+/* ── Estilos refactorizados usando tus variables ── */
 .pricing-section {
-  --accent: #00e5a0;
-  --accent-dim: rgba(0, 229, 160, 0.12);
-  --accent-glow: rgba(0, 229, 160, 0.35);
-  --bg: #080c10;
-  --surface: #0e1419;
-  --surface-2: #131a22;
-  --border: rgba(255, 255, 255, 0.07);
-  --border-accent: rgba(0, 229, 160, 0.4);
-  --text: #e8edf2;
-  --text-muted: #6b7a8d;
-  --popular-gradient: linear-gradient(135deg, #00e5a0 0%, #00b4d8 100%);
-
   position: relative;
-  background: var(--bg);
+  background: var(--color-bg);
   padding: 120px 24px;
   overflow: hidden;
   font-family: 'DM Sans', 'Segoe UI', sans-serif;
 }
 
 /* ── Background effects ── */
-.bg-grid {
+/* .bg-grid {
   position: absolute;
   inset: 0;
   background-image:
@@ -394,7 +372,9 @@ const currentPlans = computed(() => {
     linear-gradient(90deg, rgba(255,255,255,0.025) 1px, transparent 1px);
   background-size: 60px 60px;
   mask-image: radial-gradient(ellipse 80% 60% at 50% 50%, black 40%, transparent 100%);
-}
+  -webkit-mask-image: radial-gradient(ellipse 80% 60% at 50% 50%, black 40%, transparent 100%);
+  pointer-events: none;
+} */
 
 .bg-glow {
   position: absolute;
@@ -403,18 +383,22 @@ const currentPlans = computed(() => {
   border-radius: 50%;
   filter: blur(120px);
   pointer-events: none;
+  z-index: 0;
 }
 
 .bg-glow--left {
   top: -100px;
   left: -150px;
-  background: rgba(0, 229, 160, 0.06);
+  /* CORREGIDO A TU ACCENT COLOR */
+  background: var(--color-accent-dim);
 }
 
 .bg-glow--right {
   bottom: -100px;
   right: -150px;
-  background: rgba(0, 180, 216, 0.06);
+  /* CORREGIDO A TU ACCENT COLOR */
+  background: var(--color-accent-dim);
+  opacity: 0.5;
 }
 
 /* ── Layout ── */
@@ -422,6 +406,7 @@ const currentPlans = computed(() => {
   position: relative;
   max-width: 1200px;
   margin: 0 auto;
+  z-index: 1;
 }
 
 /* ── Header ── */
@@ -431,14 +416,15 @@ const currentPlans = computed(() => {
 }
 
 .pricing-eyebrow {
-  display: inline-block;
+  display: inline-flex;
+  align-items: center;
   font-size: 11px;
   font-weight: 700;
   letter-spacing: 0.2em;
   text-transform: uppercase;
-  color: var(--accent);
-  background: var(--accent-dim);
-  border: 1px solid var(--border-accent);
+  color: var(--color-accent);
+  background: var(--color-accent-dim);
+  border: 1px solid var(--color-border-accent);
   padding: 6px 16px;
   border-radius: 100px;
   margin-bottom: 24px;
@@ -447,7 +433,7 @@ const currentPlans = computed(() => {
 .pricing-title {
   font-size: clamp(36px, 5vw, 60px);
   font-weight: 800;
-  color: var(--text);
+  color: var(--color-text);
   line-height: 1.1;
   margin: 0 0 16px;
   letter-spacing: -0.03em;
@@ -455,7 +441,8 @@ const currentPlans = computed(() => {
 
 .pricing-title em {
   font-style: normal;
-  background: var(--popular-gradient);
+  /* CORREGIDO A TU GRADIENTE */
+  background: var(--color-gradient-popular);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
@@ -463,7 +450,7 @@ const currentPlans = computed(() => {
 
 .pricing-subtitle {
   font-size: 17px;
-  color: var(--text-muted);
+  color: var(--color-text-muted);
   max-width: 500px;
   margin: 0 auto 40px;
   line-height: 1.6;
@@ -482,10 +469,10 @@ const currentPlans = computed(() => {
   align-items: center;
   gap: 8px;
   padding: 10px 20px;
-  background: var(--surface);
-  border: 1px solid var(--border);
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
   border-radius: 100px;
-  color: var(--text-muted);
+  color: var(--color-text-muted);
   font-size: 14px;
   font-weight: 500;
   cursor: pointer;
@@ -493,14 +480,14 @@ const currentPlans = computed(() => {
 }
 
 .service-tab:hover {
-  border-color: rgba(255, 255, 255, 0.15);
-  color: var(--text);
+  border-color: var(--color-border-accent);
+  color: var(--color-text);
 }
 
 .service-tab--active {
-  background: var(--accent-dim);
-  border-color: var(--border-accent);
-  color: var(--accent);
+  background: var(--color-accent-dim);
+  border-color: var(--color-border-accent);
+  color: var(--color-accent);
 }
 
 .service-tab__icon {
@@ -518,8 +505,8 @@ const currentPlans = computed(() => {
 /* ── Plan card ── */
 .plan-card {
   position: relative;
-  background: var(--surface);
-  border: 1px solid var(--border);
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
   border-radius: 20px;
   padding: 32px;
   transition: transform 0.3s ease, box-shadow 0.3s ease;
@@ -527,13 +514,15 @@ const currentPlans = computed(() => {
 
 .plan-card:hover {
   transform: translateY(-4px);
-  box-shadow: 0 24px 48px rgba(0, 0, 0, 0.4);
+  box-shadow: var(--shadow-md);
+  border-color: var(--color-border-accent);
 }
 
 .plan-card--popular {
-  background: var(--surface-2);
-  border-color: var(--border-accent);
-  box-shadow: 0 0 0 1px var(--border-accent), 0 24px 64px rgba(0, 229, 160, 0.08);
+  background: var(--color-surface-2);
+  border-color: var(--color-border-accent);
+  /* CORREGIDO A TU SHADOW */
+  box-shadow: 0 0 0 1px var(--color-border-accent), var(--shadow-lg);
   transform: scale(1.03);
 }
 
@@ -551,7 +540,8 @@ const currentPlans = computed(() => {
 
 .popular-badge span {
   display: inline-block;
-  background: var(--popular-gradient);
+  /* CORREGIDO A TU GRADIENTE */
+  background: var(--color-gradient-popular);
   color: #000;
   font-size: 12px;
   font-weight: 700;
@@ -573,13 +563,13 @@ const currentPlans = computed(() => {
 .plan-name {
   font-size: 20px;
   font-weight: 700;
-  color: var(--text);
+  color: var(--color-text);
   margin: 0 0 8px;
 }
 
 .plan-description {
   font-size: 14px;
-  color: var(--text-muted);
+  color: var(--color-text-muted);
   line-height: 1.5;
   margin: 0;
 }
@@ -595,20 +585,21 @@ const currentPlans = computed(() => {
 .plan-price__currency {
   font-size: 22px;
   font-weight: 700;
-  color: var(--text-muted);
+  color: var(--color-text-muted);
   padding-bottom: 6px;
 }
 
 .plan-price__amount {
   font-size: 52px;
   font-weight: 800;
-  color: var(--text);
+  color: var(--color-text);
   letter-spacing: -0.04em;
   line-height: 1;
 }
 
 .plan-card--popular .plan-price__amount {
-  background: var(--popular-gradient);
+  /* CORREGIDO A TU GRADIENTE */
+  background: var(--color-gradient-popular);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
@@ -616,14 +607,14 @@ const currentPlans = computed(() => {
 
 .plan-price__period {
   font-size: 14px;
-  color: var(--text-muted);
+  color: var(--color-text-muted);
   padding-bottom: 8px;
   margin-left: 4px;
 }
 
 .plan-delivery {
   font-size: 13px;
-  color: var(--text-muted);
+  color: var(--color-text-muted);
   margin: 0 0 24px;
 }
 
@@ -632,7 +623,7 @@ const currentPlans = computed(() => {
   list-style: none;
   padding: 0;
   margin: 0 0 28px;
-  border-top: 1px solid var(--border);
+  border-top: 1px solid var(--color-border);
   padding-top: 24px;
   display: flex;
   flex-direction: column;
@@ -644,11 +635,11 @@ const currentPlans = computed(() => {
   align-items: center;
   gap: 10px;
   font-size: 14px;
-  color: var(--text);
+  color: var(--color-text);
 }
 
 .plan-feature--disabled {
-  color: var(--text-muted);
+  color: var(--color-text-muted);
   text-decoration: line-through;
   text-decoration-color: rgba(107, 122, 141, 0.4);
 }
@@ -662,14 +653,14 @@ const currentPlans = computed(() => {
   justify-content: center;
   font-size: 11px;
   flex-shrink: 0;
-  background: var(--accent-dim);
-  color: var(--accent);
+  background: var(--color-accent-dim);
+  color: var(--color-accent);
   font-weight: 700;
 }
 
 .plan-feature--disabled .plan-feature__check {
   background: rgba(255, 255, 255, 0.04);
-  color: var(--text-muted);
+  color: var(--color-text-muted);
 }
 
 /* CTA Button */
@@ -681,9 +672,9 @@ const currentPlans = computed(() => {
   width: 100%;
   padding: 14px 24px;
   background: transparent;
-  border: 1px solid var(--border);
+  border: 1px solid var(--color-border);
   border-radius: 12px;
-  color: var(--text);
+  color: var(--color-text);
   font-size: 15px;
   font-weight: 600;
   text-decoration: none;
@@ -697,15 +688,16 @@ const currentPlans = computed(() => {
 }
 
 .plan-cta--popular {
-  background: var(--accent);
-  border-color: var(--accent);
+  background: var(--color-accent);
+  border-color: var(--color-accent);
   color: #000;
 }
 
 .plan-cta--popular:hover {
-  background: #00ffb3;
-  border-color: #00ffb3;
-  box-shadow: 0 0 24px var(--accent-glow);
+  /* CORREGIDO A NARANJA MÁS CLARO */
+  background: #ffb300;
+  border-color: #ffb300;
+  box-shadow: 0 0 24px var(--color-accent-glow);
 }
 
 .plan-cta__arrow {
@@ -720,21 +712,21 @@ const currentPlans = computed(() => {
 .pricing-note {
   text-align: center;
   font-size: 15px;
-  color: var(--text-muted);
+  color: var(--color-text-muted);
   margin-top: 48px;
 }
 
 .pricing-note__link {
-  color: var(--accent);
+  color: var(--color-accent);
   text-decoration: none;
   font-weight: 600;
-  border-bottom: 1px solid var(--border-accent);
+  border-bottom: 1px solid var(--color-border-accent);
   padding-bottom: 1px;
   transition: border-color 0.2s;
 }
 
 .pricing-note__link:hover {
-  border-color: var(--accent);
+  border-color: var(--color-accent);
 }
 
 /* ── Responsive ── */

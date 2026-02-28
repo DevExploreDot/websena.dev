@@ -1,21 +1,5 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
-
-/* Reset suave */
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
-
-/* Evita scroll horizontal por efectos glow */
-html, body {
-  overflow-x: hidden;
-}
-
-/* Contenedores con fondo decorativo */
-.section-with-bg {
-  position: relative;
-  overflow: hidden;
-}
+@import './assets/css/variables.css';
+@import './assets/css/base.css';
+@import './assets/css/components.css';
+@import './assets/css/utilities.css';
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&display=swap');

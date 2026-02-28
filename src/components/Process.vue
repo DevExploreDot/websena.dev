@@ -1,12 +1,10 @@
 <template>
-  <section id="proceso" class="section-with-bg py-[var(--space-3xl)] px-[var(--space-md)]">
-    <!-- Background decorative elements -->
+  <section id="proceso" class="process-section">
     <div class="bg-grid"></div>
     <div class="bg-glow bg-glow--center"></div>
 
-    <div class="max-w-6xl mx-auto px-4 relative z-10">
-      <!-- Section Header -->
-      <div class="text-center max-w-3xl mx-auto mb-20">
+    <div class="main-container">
+      <div class="header-container">
         <span class="process-eyebrow">Mi Metodología</span>
         <h2 class="process-title">
           Cómo trabajo para<br /><em>garantizar tu éxito</em>
@@ -16,9 +14,7 @@
         </p>
       </div>
       
-      <!-- Timeline -->
       <div class="process-timeline">
-        <!-- Step 1 -->
         <div class="process-step">
           <div class="process-step__connector process-step__connector--top"></div>
           <div class="process-step__content">
@@ -36,7 +32,6 @@
           <div class="process-step__connector process-step__connector--bottom"></div>
         </div>
         
-        <!-- Step 2 -->
         <div class="process-step">
           <div class="process-step__connector process-step__connector--top"></div>
           <div class="process-step__content">
@@ -54,7 +49,6 @@
           <div class="process-step__connector process-step__connector--bottom"></div>
         </div>
         
-        <!-- Step 3 -->
         <div class="process-step">
           <div class="process-step__connector process-step__connector--top"></div>
           <div class="process-step__content">
@@ -72,7 +66,6 @@
           <div class="process-step__connector process-step__connector--bottom"></div>
         </div>
         
-        <!-- Step 4 -->
         <div class="process-step">
           <div class="process-step__connector process-step__connector--top"></div>
           <div class="process-step__content">
@@ -91,8 +84,7 @@
         </div>
       </div>
       
-      <!-- CTA -->
-      <div class="text-center mt-16">
+      <div class="cta-container">
         <a href="#precios" class="process-cta">
           Ver planes y precios
           <span class="process-cta__arrow">→</span>
@@ -103,26 +95,22 @@
 </template>
 
 <style scoped>
-/* ── Variables (reutilizadas) ── */
-#proceso {
-  --accent: #00e5a0;
-  --accent-dim: rgba(0, 229, 160, 0.12);
-  --accent-glow: rgba(0, 229, 160, 0.35);
-  --bg: #080c10;
-  --surface: #0e1419;
-  --surface-2: #131a22;
-  --border: rgba(255, 255, 255, 0.07);
-  --border-accent: rgba(0, 229, 160, 0.4);
-  --text: #e8edf2;
-  --text-muted: #6b7a8d;
-  --popular-gradient: linear-gradient(135deg, #00e5a0 0%, #00b4d8 100%);
-
-  background: var(--bg);
+/* ── Estilos refactorizados usando tus variables ── */
+.process-section {
+  background: var(--color-bg);
+  color: var(--color-text);
   font-family: 'DM Sans', 'Segoe UI', sans-serif;
+  position: relative;
+  overflow: hidden;
+  /* Espaciado usando tus variables */
+  padding-top: var(--space-3xl);
+  padding-bottom: var(--space-3xl);
+  padding-left: var(--space-md);
+  padding-right: var(--space-md);
 }
 
 /* ── Background effects ── */
-.bg-grid {
+/* .bg-grid {
   position: absolute;
   inset: 0;
   background-image:
@@ -130,8 +118,9 @@
     linear-gradient(90deg, rgba(255,255,255,0.025) 1px, transparent 1px);
   background-size: 60px 60px;
   mask-image: radial-gradient(ellipse 80% 60% at 50% 50%, black 40%, transparent 100%);
+  -webkit-mask-image: radial-gradient(ellipse 80% 60% at 50% 50%, black 40%, transparent 100%);
   pointer-events: none;
-}
+} */
 
 .bg-glow--center {
   position: absolute;
@@ -141,30 +130,45 @@
   width: 600px;
   height: 600px;
   border-radius: 50%;
-  background: rgba(0, 180, 216, 0.06);
+  /* Corregido a tu accent color */
+  background: var(--color-accent-dim);
   filter: blur(120px);
   pointer-events: none;
 }
 
-/* ── Header ── */
+/* ── Layout ── */
+.main-container {
+  max-width: 1152px;
+  margin: 0 auto;
+  position: relative;
+  z-index: 1;
+}
+
+.header-container {
+  text-align: center;
+  max-width: 768px;
+  margin: 0 auto 80px;
+}
+
+/* ── Header Styles ── */
 .process-eyebrow {
   display: inline-block;
   font-size: 11px;
   font-weight: 700;
   letter-spacing: 0.2em;
   text-transform: uppercase;
-  color: var(--accent);
-  background: var(--accent-dim);
-  border: 1px solid var(--border-accent);
+  color: var(--color-accent);
+  background: var(--color-accent-dim);
+  border: 1px solid var(--color-border-accent);
   padding: 6px 16px;
   border-radius: 100px;
   margin-bottom: 24px;
 }
 
 .process-title {
-  font-size: clamp(36px, 5vw, 60px);
+  font-size: 60px;
   font-weight: 800;
-  color: var(--text);
+  color: var(--color-text);
   line-height: 1.1;
   margin: 0 0 16px;
   letter-spacing: -0.03em;
@@ -172,7 +176,8 @@
 
 .process-title em {
   font-style: normal;
-  background: var(--popular-gradient);
+  /* CORREGIDO A TU GRADIENTE */
+  background: var(--color-gradient-popular);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
@@ -180,7 +185,7 @@
 
 .process-subtitle {
   font-size: 17px;
-  color: var(--text-muted);
+  color: var(--color-text-muted);
   max-width: 500px;
   margin: 0 auto;
   line-height: 1.6;
@@ -201,7 +206,7 @@
   bottom: 0;
   left: 50%;
   width: 2px;
-  background: var(--border);
+  background: var(--color-border);
   transform: translateX(-50%);
 }
 
@@ -223,8 +228,8 @@
 
 .process-step__content {
   position: relative;
-  background: var(--surface);
-  border: 1px solid var(--border);
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
   border-radius: 20px;
   padding: 32px;
   transition: transform 0.3s ease, box-shadow 0.3s ease;
@@ -232,8 +237,8 @@
 
 .process-step__content:hover {
   transform: translateY(-4px);
-  box-shadow: 0 24px 48px rgba(0, 0, 0, 0.4);
-  border-color: var(--border-accent);
+  box-shadow: var(--shadow-md);
+  border-color: var(--color-border-accent);
 }
 
 .process-step__badge {
@@ -244,27 +249,27 @@
   width: 48px;
   height: 48px;
   border-radius: 50%;
-  background: var(--accent);
-  color: #000;
+  background: var(--color-accent);
+  color: var(--color-bg);
   font-size: 20px;
   font-weight: 800;
   display: flex;
   align-items: center;
   justify-content: center;
-  border: 4px solid var(--bg);
-  box-shadow: 0 0 20px var(--accent-glow);
+  border: 4px solid var(--color-bg);
+  box-shadow: 0 0 20px var(--color-accent-glow);
 }
 
 .process-step__title {
   font-size: 24px;
   font-weight: 800;
-  color: var(--text);
+  color: var(--color-text);
   margin: 0 0 12px;
 }
 
 .process-step__description {
   font-size: 16px;
-  color: var(--text-muted);
+  color: var(--color-text-muted);
   line-height: 1.6;
   margin: 0 0 20px;
 }
@@ -280,7 +285,7 @@
 
 .process-step__details li {
   font-size: 15px;
-  color: var(--text);
+  color: var(--color-text);
   position: relative;
   padding-left: 20px;
 }
@@ -289,14 +294,14 @@
   content: '✓';
   position: absolute;
   left: 0;
-  color: var(--accent);
+  color: var(--color-accent);
   font-weight: bold;
 }
 
 /* ── Connectors ── */
 .process-step__connector {
   position: absolute;
-  background: var(--border);
+  background: var(--color-border);
   z-index: 0;
 }
 
@@ -317,13 +322,18 @@
 }
 
 /* ── CTA ── */
+.cta-container {
+  text-align: center;
+  margin-top: var(--space-2xl);
+}
+
 .process-cta {
   display: inline-flex;
   align-items: center;
   gap: 8px;
   padding: 14px 32px;
-  background: var(--accent);
-  color: #000;
+  background: var(--color-accent);
+  color: var(--color-bg);
   font-size: 16px;
   font-weight: 700;
   border-radius: 14px;
@@ -332,8 +342,8 @@
 }
 
 .process-cta:hover {
-  background: #00ffb3;
-  box-shadow: 0 0 32px var(--accent-glow);
+  background: #ffb300; /* Un tono más claro para el hover */
+  box-shadow: 0 0 32px var(--color-accent-glow);
   transform: translateX(4px);
 }
 
@@ -346,7 +356,13 @@
 }
 
 /* ── Responsive ── */
+@media (max-width: 1024px) {
+  .process-title { font-size: 48px; }
+}
+
 @media (max-width: 768px) {
+  .process-title { font-size: 36px; }
+
   .process-timeline::before {
     left: 32px;
   }

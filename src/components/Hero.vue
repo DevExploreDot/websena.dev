@@ -1,30 +1,25 @@
 <template>
   <section class="hero-section">
-    <!-- Background decorative elements -->
     <div class="bg-grid"></div>
-    <div class="bg-glow bg-glow--top-left"></div>
-    <div class="bg-glow bg-glow--bottom-right"></div>
+   <!--  <div class="bg-glow bg-glow--top-left"></div>
+    <div class="bg-glow bg-glow--bottom-right"></div> -->
 
     <div class="hero-container">
       <div class="hero-content">
-        <!-- Eyebrow badge (corregido: hero-eyebrow en lugar de hero-badge) -->
         <div class="hero-eyebrow">
           <span class="badge-dot"></span>
           Disponible para nuevos proyectos
         </div>
 
-        <!-- Main headline -->
         <h1 class="hero-title">
           Sistemas que transforman<br /><em>tu negocio</em>
         </h1>
 
-        <!-- Subtitle enfocado en resultados -->
         <p class="hero-subtitle">
           Desarrollo software empresarial con arquitectura modular y RBAC avanzado. 
           <strong>Automatiza procesos, reduce costos operativos y escala sin límites.</strong>
         </p>
 
-        <!-- Social proof stats -->
         <div class="hero-stats">
           <div class="stat">
             <span class="stat-number">15+</span>
@@ -40,7 +35,6 @@
           </div>
         </div>
 
-        <!-- Primary CTAs -->
         <div class="hero-ctas">
           <a :href="whatsappLink" target="_blank" class="cta-primary">
             <svg class="cta-icon" fill="currentColor" viewBox="0 0 24 24">
@@ -54,7 +48,6 @@
           </a>
         </div>
 
-        <!-- Location -->
         <div class="hero-location">
           <svg class="location-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/>
@@ -64,7 +57,6 @@
         </div>
       </div>
 
-      <!-- System mockup visual -->
       <div class="hero-visual">
         <div class="visual-container">
           <div class="visual-screen visual-screen--desktop">
@@ -99,15 +91,15 @@
                 <div class="screen-data">
                   <div class="data-card">
                     <div class="data-value">247</div>
-                    <div class="data-label">Empleados activos</div>
+                    <div class="data-label">Empleados</div>
                   </div>
                   <div class="data-card">
                     <div class="data-value">18</div>
-                    <div class="data-label">Sedes gestionadas</div>
+                    <div class="data-label">Sedes</div>
                   </div>
                   <div class="data-card">
                     <div class="data-value">99.8%</div>
-                    <div class="data-label">Precisión inventario</div>
+                    <div class="data-label">Precisión</div>
                   </div>
                 </div>
               </div>
@@ -117,7 +109,6 @@
       </div>
     </div>
 
-    <!-- Scroll indicator -->
     <a href="#servicios" class="scroll-indicator" aria-label="Desplazarse a servicios">
       <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3"/>
@@ -127,107 +118,80 @@
 </template>
 
 <script setup lang="ts">
-// Corregido: SIN espacios en la URL de WhatsApp
-const phoneNumber = '59177777777' // 👉 TU NÚMERO REAL SIN ESPACIOS
+const phoneNumber = '59177777777' 
 const message = encodeURIComponent('Hola Samuel, vi tu portafolio y me interesa desarrollar un sistema para mi negocio. ¿Podemos agendar una llamada?')
-const whatsappLink = `https://wa.me/${phoneNumber}?text=${message}` // 👉 URL corregida
+const whatsappLink = `https://wa.me/${phoneNumber}?text=${message}`
 </script>
 
 <style scoped>
-/* ── Variables ── */
+/* ── Layout y Fondo ── */
 .hero-section {
-  --accent: #00e5a0;
-  --accent-dim: rgba(0, 229, 160, 0.12);
-  --accent-glow: rgba(0, 229, 160, 0.35);
-  --bg: #080c10;
-  --surface: #0e1419;
-  --surface-2: #131a22;
-  --border: rgba(255, 255, 255, 0.07);
-  --border-accent: rgba(0, 229, 160, 0.4);
-  --text: #e8edf2;
-  --text-muted: #6b7a8d;
-  --gradient: linear-gradient(135deg, #00e5a0 0%, #00b4d8 100%);
-
   position: relative;
   min-height: 100vh;
   display: flex;
   align-items: center;
   justify-content: center;
-  background: var(--bg);
-  overflow: hidden;
-  font-family: 'DM Sans', 'Segoe UI', sans-serif;
-  padding-top: 24px;
-  padding-bottom: 120px;
+  background: var(--color-bg);
+  font-family: 'DM Sans', sans-serif;
+  padding: 100px 24px;
+  box-sizing: border-box;
+  overflow: hidden; /* 🔥 SOLUCIÓN SCROLL: Recorta luces de fondo */
 }
 
-/* ── Background effects ── */
-.bg-grid {
+/* ── Elementos de Fondo ── */
+/* .bg-grid {
   position: absolute;
   inset: 0;
   background-image:
-    linear-gradient(rgba(255,255,255,0.025) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(255,255,255,0.025) 1px, transparent 1px);
-  background-size: 60px 60px;
-  mask-image: radial-gradient(ellipse 80% 60% at 50% 50%, black 40%, transparent 100%);
+    linear-gradient(var(--color-border) 1px, transparent 1px),
+    linear-gradient(90deg, var(--color-border) 1px, transparent 1px);
+  background-size: 50px 50px;
+  opacity: 0.9;
+  mask-image: radial-gradient(ellipse 70% 50% at 50% 50%, black 30%, transparent 100%);
   pointer-events: none;
-}
+} */
 
 .bg-glow {
   position: absolute;
-  width: 700px;
-  height: 700px;
+  width: 50vw;
+  height: 50vw;
   border-radius: 50%;
-  filter: blur(140px);
+  filter: blur(150px);
+  opacity: 0.3;
   pointer-events: none;
 }
 
-.bg-glow--top-left {
-  top: -200px;
-  left: -250px;
-  background: rgba(0, 229, 160, 0.09);
-}
+/* 🔥 SOLUCIÓN COLOR: Usa tus variables globales */
+.bg-glow--top-left { top: -10%; left: -20%; background: var(--color-accent); }
+.bg-glow--bottom-right { bottom: -10%; right: -20%; background: var(--color-accent); }
 
-.bg-glow--bottom-right {
-  bottom: -200px;
-  right: -250px;
-  background: rgba(0, 180, 216, 0.09);
-}
-
-/* ── Layout ── */
+/* ── Contenedor Principal ── */
 .hero-container {
   position: relative;
-  z-index: 1;
+  z-index: 10;
   width: 100%;
-  max-width: 1400px;
-  margin: 0 auto;
-  padding: 0 24px;
+  max-width: 1200px;
   display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 60px;
+  grid-template-columns: 1.2fr 0.8fr;
+  gap: 50px;
   align-items: center;
 }
 
-/* ── Content side ── */
-.hero-content {
-  max-width: 600px;
-  display: flex;
-  flex-direction: column;
-  gap: 28px;
-}
+/* ── Contenido Izquierdo ── */
+.hero-content { display: flex; flex-direction: column; gap: 24px; }
 
-/* ── Eyebrow badge ── */
 .hero-eyebrow {
   display: inline-flex;
   align-items: center;
   gap: 10px;
-  font-size: 13px;
+  font-size: 12px;
   font-weight: 700;
-  letter-spacing: 0.05em;
   text-transform: uppercase;
-  color: var(--accent);
-  background: var(--accent-dim);
-  border: 1px solid var(--border-accent);
-  padding: 8px 20px;
+  letter-spacing: 1px;
+  color: var(--color-accent);
+  background: var(--color-accent-dim);
+  border: 1px solid var(--color-border-accent);
+  padding: 8px 16px;
   border-radius: 100px;
   width: fit-content;
 }
@@ -235,417 +199,222 @@ const whatsappLink = `https://wa.me/${phoneNumber}?text=${message}` // 👉 URL 
 .badge-dot {
   width: 8px;
   height: 8px;
-  background: var(--accent);
+  background: var(--color-accent);
   border-radius: 50%;
-  animation: pulse 2s ease-in-out infinite;
+  animation: pulse 2s infinite;
 }
 
-/* ── Title ── */
 .hero-title {
-  font-size: clamp(48px, 8vw, 72px);
+  font-size: clamp(36px, 6vw, 60px);
   font-weight: 800;
-  color: var(--text);
-  line-height: 1.05;
+  color: var(--color-text);
+  line-height: 1.1;
+  letter-spacing: -0.02em;
   margin: 0;
-  letter-spacing: -0.03em;
 }
 
 .hero-title em {
   font-style: normal;
-  background: var(--gradient);
+  background: var(--color-gradient-popular);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
-  background-clip: text;
 }
 
-/* ── Subtitle ── */
 .hero-subtitle {
-  font-size: 20px;
-  color: var(--text-muted);
-  line-height: 1.65;
+  font-size: 18px;
+  color: var(--color-text-muted);
+  line-height: 1.6;
+  max-width: 550px;
   margin: 0;
 }
 
-.hero-subtitle strong {
-  color: var(--text);
-  font-weight: 700;
-}
+.hero-subtitle strong { color: var(--color-text); }
 
-/* ── Stats ── */
+/* ── Estadísticas ── */
 .hero-stats {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 16px;
+  gap: 15px;
+  margin-top: 10px;
 }
 
 .stat {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 6px;
   padding: 16px;
-  background: var(--surface);
-  border: 1px solid var(--border);
-  border-radius: 16px;
-  transition: all 0.3s ease;
-}
-
-.stat:hover {
-  border-color: var(--border-accent);
-  transform: translateY(-2px);
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: 12px;
+  text-align: center;
 }
 
 .stat-number {
-  font-size: 32px;
+  display: block;
+  font-size: 28px;
   font-weight: 800;
-  background: var(--gradient);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
+  color: var(--color-accent);
   line-height: 1;
 }
 
 .stat-label {
-  font-size: 13px;
-  color: var(--text-muted);
-  text-align: center;
-  line-height: 1.4;
+  font-size: 11px;
+  color: var(--color-text-muted);
+  text-transform: uppercase;
+  margin-top: 4px;
+  display: block;
 }
 
 /* ── CTAs ── */
 .hero-ctas {
   display: flex;
+  gap: 15px;
+  margin-top: 10px;
   flex-wrap: wrap;
-  gap: 16px;
 }
 
 .cta-primary {
-  display: inline-flex;
-  align-items: center;
-  gap: 12px;
-  padding: 16px 32px;
-  background: var(--accent);
-  border: 2px solid var(--accent);
-  border-radius: 16px;
-  color: #000;
-  font-size: 17px;
-  font-weight: 700;
-  text-decoration: none;
-  transition: all 0.3s ease;
-  box-shadow: 0 4px 20px rgba(0, 229, 160, 0.25);
-}
-
-.cta-primary:hover {
-  background: #00ffb3;
-  border-color: #00ffb3;
-  transform: translateY(-3px);
-  box-shadow: 0 8px 32px var(--accent-glow);
-}
-
-.cta-icon {
-  width: 24px;
-  height: 24px;
-  flex-shrink: 0;
-}
-
-.cta-secondary {
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  padding: 16px 32px;
-  background: transparent;
-  border: 2px solid var(--border);
-  border-radius: 16px;
-  color: var(--text);
-  font-size: 17px;
-  font-weight: 600;
-  text-decoration: none;
-  transition: all 0.3s ease;
-}
-
-.cta-secondary:hover {
-  border-color: rgba(255, 255, 255, 0.2);
-  background: rgba(255, 255, 255, 0.05);
-  transform: translateY(-3px);
-}
-
-.cta-arrow {
-  transition: transform 0.3s ease;
-}
-
-.cta-secondary:hover .cta-arrow {
-  transform: translateX(6px);
-}
-
-/* ── Location ── */
-.hero-location {
   display: flex;
   align-items: center;
   gap: 10px;
-  font-size: 15px;
-  color: var(--text-muted);
+  padding: 14px 28px;
+  background: var(--color-accent);
+  color: #000;
+  border-radius: 12px;
+  font-weight: 700;
+  text-decoration: none;
+  transition: transform 0.2s, box-shadow 0.2s;
 }
 
-.location-icon {
-  width: 18px;
-  height: 18px;
-  flex-shrink: 0;
+.cta-primary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
 }
 
-/* ── Visual mockup ── */
-.hero-visual {
-  position: relative;
-  display: flex;
-  justify-content: center;
-  align-items: flex-start;
-  height: 100%;
-  padding-top: 40px;
+.cta-secondary {
+  padding: 14px 28px;
+  border: 1px solid var(--color-border);
+  color: var(--color-text);
+  border-radius: 12px;
+  font-weight: 600;
+  text-decoration: none;
+  transition: background 0.2s;
 }
 
-.visual-container {
-  position: relative;
-  width: 100%;
-  max-width: 520px;
-  height: 480px;
+.cta-secondary:hover {
+  background: var(--color-surface);
+}
+
+.cta-icon { width: 20px; height: 20px; }
+.cta-arrow { margin-left: 5px; }
+
+/* ── Ubicación ── */
+.hero-location {
   display: flex;
   align-items: center;
-  justify-content: center;
+  gap: 8px;
+  font-size: 14px;
+  color: var(--color-text-muted);
+  margin-top: 10px;
 }
+.location-icon { width: 18px; color: var(--color-accent); }
+
+/* ── Mockup Visual ── */
+.hero-visual { display: flex; justify-content: center; }
+.visual-container { width: 100%; max-width: 480px; }
 
 .visual-screen--desktop {
-  width: 100%;
-  height: 100%;
-  background: var(--surface);
-  border: 2px solid var(--border);
-  border-radius: 28px;
-  box-shadow: 0 40px 80px rgba(0, 0, 0, 0.5);
+  background: var(--color-surface-2);
+  border: 1px solid var(--color-border);
+  border-radius: 16px;
+  box-shadow: var(--shadow-md);
   overflow: hidden;
-  transform: perspective(1000px) rotateY(-5deg) rotateX(5deg);
-  transition: transform 0.4s ease;
-}
-
-.hero-container:hover .visual-screen--desktop {
-  transform: perspective(1000px) rotateY(0) rotateX(0);
-}
-
-.screen-content {
-  width: 100%;
-  height: 100%;
-  display: flex;
-  flex-direction: column;
 }
 
 .screen-header {
-  padding: 20px 24px;
-  border-bottom: 1px solid var(--border);
-  background: rgba(255, 255, 255, 0.02);
-  display: flex;
-  align-items: center;
-  gap: 16px;
-}
-
-.screen-dots {
+  padding: 12px 16px;
+  border-bottom: 1px solid var(--color-border);
   display: flex;
   gap: 8px;
+  align-items: center;
+  background: rgba(0,0,0,0.2);
 }
 
-.dot {
-  width: 14px;
-  height: 14px;
-  border-radius: 50%;
-}
-
+.dot { width: 10px; height: 10px; border-radius: 50%; }
 .dot--red { background: #ff5f57; }
 .dot--yellow { background: #ffbd2e; }
 .dot--green { background: #28c940; }
+.screen-title { font-size: 12px; color: var(--color-text-muted); font-weight: 600; }
 
-.screen-title {
-  font-size: 18px;
-  font-weight: 700;
-  color: var(--text);
-}
-
-.screen-body {
-  flex: 1;
-  padding: 28px;
-  overflow: hidden;
-  display: flex;
-  flex-direction: column;
-  gap: 28px;
-}
+.screen-body { padding: 20px; display: flex; flex-direction: column; gap: 20px; }
 
 .screen-modules {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-  gap: 16px;
+  gap: 12px;
 }
 
 .module-item {
   display: flex;
   align-items: center;
-  gap: 14px;
-  padding: 16px;
-  border-radius: 16px;
-  background: rgba(255, 255, 255, 0.04);
-  color: var(--text-muted);
-  transition: all 0.2s ease;
-  cursor: pointer;
-}
-
-.module-item:hover {
-  background: rgba(255, 255, 255, 0.08);
-  color: var(--text);
+  gap: 10px;
+  padding: 12px;
+  background: var(--color-surface);
+  border-radius: 8px;
+  font-size: 13px;
+  color: var(--color-text-muted);
+  border: 1px solid var(--color-border);
 }
 
 .module-item--active {
-  background: var(--accent-dim);
-  color: var(--accent);
-  border: 1px solid var(--border-accent);
+  background: var(--color-accent-dim);
+  border: 1px solid var(--color-border-accent);
+  color: var(--color-accent);
 }
 
-.module-icon {
-  font-size: 24px;
-  min-width: 24px;
-  text-align: center;
-}
-
-.module-label {
-  font-size: 16px;
-  font-weight: 600;
-}
+.module-icon { font-size: 16px; }
 
 .screen-data {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 16px;
+  gap: 10px;
 }
 
 .data-card {
-  background: rgba(255, 255, 255, 0.04);
-  border-radius: 16px;
-  padding: 20px;
+  background: var(--color-surface);
+  padding: 12px;
+  border-radius: 8px;
   text-align: center;
-  border: 1px solid var(--border);
+  border: 1px solid var(--color-border);
 }
 
-.data-value {
-  font-size: 28px;
-  font-weight: 800;
-  color: var(--accent);
-  line-height: 1.2;
-  margin-bottom: 4px;
-}
+.data-value { font-weight: 800; color: var(--color-accent); font-size: 16px; }
+.data-label { font-size: 10px; color: var(--color-text-muted); text-transform: uppercase; margin-top: 2px; }
 
-.data-label {
-  font-size: 13px;
-  color: var(--text-muted);
-  line-height: 1.4;
-}
-
-/* ── Scroll indicator ── */
-.scroll-indicator {
-  position: absolute;
-  bottom: 40px;
-  left: 50%;
-  transform: translateX(-50%);
-  color: var(--text-muted);
-  transition: color 0.3s ease;
-  animation: bounce 2s ease-in-out infinite;
-  z-index: 10;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 8px;
-}
-
-.scroll-indicator:hover {
-  color: var(--accent);
-}
-
-.scroll-indicator svg {
-  width: 32px;
-  height: 32px;
-  stroke-width: 2.5px;
-}
-
-/* ── Animations ── */
+/* ── Animaciones ── */
 @keyframes pulse {
-  0%, 100% { opacity: 1; }
-  50% { opacity: 0.4; }
+  0% { transform: scale(1); opacity: 1; }
+  50% { transform: scale(1.3); opacity: 0.5; }
+  100% { transform: scale(1); opacity: 1; }
 }
 
 @keyframes bounce {
-  0%, 100% { transform: translateX(-50%) translateY(0); }
-  50% { transform: translateX(-50%) translateY(10px); }
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(10px); }
+}
+
+.scroll-indicator {
+  position: absolute;
+  bottom: 30px;
+  left: 50%;
+  transform: translateX(-50%);
+  color: var(--color-text-muted);
+  animation: bounce 2s infinite;
 }
 
 /* ── Responsive ── */
-@media (max-width: 1024px) {
-  .hero-container {
-    grid-template-columns: 1fr;
-    text-align: center;
-    gap: 40px;
-  }
-
-  .hero-content {
-    margin: 0 auto;
-    align-items: center;
-  }
-
-  .hero-stats {
-    grid-template-columns: repeat(3, 1fr);
-  }
-
-  .hero-ctas {
-    justify-content: center;
-    width: 100%;
-  }
-
-  .hero-visual {
-    padding-top: 0;
-    max-width: 400px;
-    margin: 0 auto;
-  }
-
-  .visual-container {
-    max-width: 400px;
-    height: 400px;
-  }
-
-  .visual-screen--desktop {
-    border-radius: 24px;
-  }
-}
-
-@media (max-width: 640px) {
-  .hero-title {
-    font-size: clamp(40px, 10vw, 56px);
-  }
-
-  .hero-subtitle {
-    font-size: 18px;
-  }
-
-  .hero-stats {
-    grid-template-columns: repeat(2, 1fr);
-  }
-
-  .hero-ctas {
-    flex-direction: column;
-  }
-
-  .cta-primary,
-  .cta-secondary {
-    width: 100%;
-    justify-content: center;
-  }
-
-  .visual-container {
-    display: none;
-  }
-
-  .scroll-indicator {
-    bottom: 32px;
-  }
+@media (max-width: 968px) {
+  .hero-container { grid-template-columns: 1fr; text-align: center; gap: 40px; }
+  .hero-content { align-items: center; }
+  .hero-visual { display: none; }
+  .hero-ctas { justify-content: center; width: 100%; }
+  .hero-stats { justify-items: center; }
 }
 </style>

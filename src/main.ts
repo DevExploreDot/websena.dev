@@ -1,7 +1,6 @@
 // src/main.ts
 import { createApp } from 'vue'
 import App from './App.vue'
-import './assets/css/variables.css' // ← Variables globales PRIMERO
 import './style.css'                // ← Tailwind CSS SEGUNDO (¡NO ELIMINAR!)
 
 // Font Awesome (mejor en index.html, pero esto funciona)
