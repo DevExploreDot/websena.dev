@@ -1,0 +1,21 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Reset suave */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Evita scroll horizontal por efectos glow */
+html, body {
+  overflow-x: hidden;
+}
+
+/* Contenedores con fondo decorativo */
+.section-with-bg {
+  position: relative;
+  overflow: hidden;
+}
